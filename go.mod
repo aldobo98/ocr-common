@@ -1,4 +1,4 @@
-module github.com/aldobo98/Onlab2/ocr-common
+module github.com/aldobo98/ocr-common
 
 go 1.24
 
