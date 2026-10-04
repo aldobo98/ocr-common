@@ -27,7 +27,7 @@ type AWS_S3 struct {
 }
 
 const SA_ID_ENV = "SA_ID"
-const S3_ENDPOINT_ENV = "S3_ENV"
+const S3_ENDPOINT_ENV = "AWS_ENDPOINT_URL"
 
 const VARIABLE_SET_FORMAT = "%v environment variable is set, using its value, %v"
 
@@ -53,10 +53,12 @@ func NewAWS_S3(logger *slog.Logger, endpoint string, bucket string) *AWS_S3 {
 		options.BaseEndpoint = aws.String(s3_endpoint)
 		options.UsePathStyle = true
 	})
+	presignClient := s3.NewPresignClient(client)
 	return &AWS_S3{
-		client: client,
-		bucket: bucket,
-		logger: logger,
+		client:        client,
+		bucket:        bucket,
+		logger:        logger,
+		presignClient: presignClient,
 	}
 }
 
