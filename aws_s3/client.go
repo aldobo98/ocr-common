@@ -46,7 +46,7 @@ func NewAWS_S3(logger *slog.Logger, endpoint string, bucket string, region strin
 		logger.Error("S3 endpoint must be specified, please specify endpoint or set environment variable " + S3_ENDPOINT_ENV + ".")
 	}
 	if region == "" {
-		logger.Info("Region is not passed, setting default value es-east-1")
+		logger.Info("Region is not passed, setting default value us-east-1")
 		region = "us-east-1"
 	}
 	//A régió csak az S3 api kompatibilitás miatt van, a SeaweedFS nem támogatja a régiókat.
